@@ -53,7 +53,7 @@ export function Digest({ night }: { night: Night }) {
           </tbody>
         </table>
       )}
-      {night.badLines > 0 ? <p class="mute">{night.badLines} unreadable lines skipped</p> : null}
+      {night.badLines > 0 ? <p class="mute">{night.badLines} unreadable {night.badLines === 1 ? 'line' : 'lines'} skipped</p> : null}
     </>
   );
 }
