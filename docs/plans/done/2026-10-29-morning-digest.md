@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-10-29
 ---
 
 # Morning digest
@@ -77,3 +78,23 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| # | Issue | Blocked by | Worker | Closed |
+|---|-------|-----------|--------|--------|
+| 1 | Digest types contract | — | claude-code · claude-opus-5 · default | 2026-10-29 |
+| 2 | Run log reader: readNight | #1 | claude-code · claude-opus-5 · default | 2026-10-29 |
+| 3 | Digest page: GET /digest/:night | #1 | claude-code · claude-sonnet-5-5 · default | 2026-10-29 |
+| 4 | Digest JSON: GET /api/digest/:night | #1 | claude-code · claude-sonnet-5-5 · default | 2026-10-29 |
+| 5 | Board links each night to its digest | #1 | claude-code · claude-sonnet-5-5 · default | 2026-10-29 |
+| 6 | Route tests for the digest page and JSON | #1 | claude-code · claude-sonnet-5-5 · default | 2026-10-29 |
+| 7 | Preview for review | #2 #3 #4 #5 #6 | claude-code · claude-opus-5 · default | 2026-10-29 |
+| 8 | Clean up: drop the marker, file the plan | #7 | claude-code · claude-opus-5 · default | 2026-10-29 |
+
+Issues 3 to 6 were worked in parallel, one worker each, against the types from #1. Two of them
+disagreed on the JSON body: #4 returned the whole night, #6's tests expected the rows alone.
+Settled at the merge toward this plan's own words in § 2b, "the same rows as the page".
+
+The preview went up with the lane marker, was reviewed, and was replaced by a marker-free copy
+at the same link (ADR 0003).
